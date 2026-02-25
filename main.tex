@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage[table]{xcolor}
+\usepackage[margin=1in, headsep=0.25in]{geometry}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage[most]{tcolorbox}
+
+\setlength{\parindent}{0pt}
+
+% --- Custom Environments ---
+\newtcolorbox{impbox}[1]{
+    colback=green!5,
+    colframe=green!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=4mm
+}
+
+\newtcolorbox{lawbox}[1]{
+    colback=orange!5,
+    colframe=orange!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=4mm
+}
+
+\newtcolorbox{notebox}[1]{
+    colback=blue!5,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=4mm
+}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{note}{Note}
+
+% --- Document Info ---
+\title{Engineering Mathematics GATE Notes}
+\author{Debarshee Chakraborty}
+\date{Fall 2026}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Engineering Mathematics GATE}} \\
+    \Large {Collection of Formulas and Notes about Mathematics}
+\end{center}
+
+% \tableofcontents
+
+\include{chapters/linear-algebra}
+
+\end{document}

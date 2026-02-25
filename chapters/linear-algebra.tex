@@ -1,0 +1,711 @@
+\begin{center}
+    \Large \textbf{Chapter 01: Linear Algebra}
+\end{center}
+
+\section{Matrix}
+
+\subsection{General Representation of a Matrix}
+
+$$  [A]_{m \times n} = [a_{ij}]_{m \times n} \quad \quad
+    \begin{array}{|c|}
+    1 \leqslant i \leqslant m \\
+    1 \leqslant j \leqslant n \\
+    \end{array} \quad
+    \begin{aligned}
+    &i = \text{Row No.} \\
+    &j = \text{Column No.}
+    \end{aligned}
+$$
+
+\subsection{Concept of Minors and Cofactors}
+
+Minors and Cofactors are calculated for an element. 
+
+\vspace{0.2cm}
+
+Let $a_{ij}$ is an element of a given matrix:
+
+$$ a_{ij} \xrightarrow{minor} M_{ij} \xrightarrow{cofactor} A_{ij} = (-1)^{i+j} \times M_{ij} $$
+
+Given a matrix $[A]$:
+$$  [A] = \begin{bmatrix}
+    1 & 1 & -1 & 2 \\
+    2 & 1 & 1 & 1 \\
+    0 & 1 & 3 & 7 \\
+    1 & 1 & 0 & 0
+    \end{bmatrix}
+$$
+
+Minor of $a_{34}$ can be calculated by calculating the determinant of the matrix by removeing the row and column the element is in (e.g. here we will remove row 3 and column 4).
+$$  Minor \longrightarrow \begin{vmatrix}
+    1 & 1 & -1 \\
+    2 & 1 & 1 \\
+    1 & 1 & 0 
+    \end{vmatrix} = -1
+$$
+
+Cofactor of Element $a_{34} = (-1)^{3+4}(-1) = 1$
+
+\subsection{Transpose of a Matrix}
+
+$$ [A] \xrightarrow{Transpose} [A^T] \quad or \quad [A]^T $$
+
+$$  [A] = \begin{bmatrix}
+    1 & 2 \\
+    2 & 1 \\
+    7 & 6
+    \end{bmatrix}_{3 \times 2} \longrightarrow [A]^T = \begin{bmatrix}
+    1 & 2 & 7 \\
+    2 & 1 & 6
+    \end{bmatrix}_{2 \times 3}
+$$
+
+$$  [A] = \begin{bmatrix}
+    1 & 2 & 7 \\
+    0 & 1 & 5 \\
+    -1 & 2 & 6
+    \end{bmatrix}_{3 \times 3} \longrightarrow [A]^T = \begin{bmatrix}
+    1 & 0 & -1 \\
+    2 & 1 & 2 \\
+    7 & 5 & 6
+    \end{bmatrix}_{3 \times 3}
+$$
+
+\section{Determinant}
+
+\begin{enumerate}
+    \item Determinant is calculated only for \textbf{Square Matrices.}
+    
+    \item If $[A]_{n \times n}$ is a square matrix, its determinant is denoted as: $ \text{det}(A) \quad \text{or} \quad |A| \quad \text{or} \quad \Delta $
+    
+    \item The result of a determinant is a \textbf{scalar value} or a \textbf{scalar function}. $ K \in \mathbb{R}, \text{Complex} $
+
+    \item The value $\Delta = |A|$ can be :- Positive, Negative, Zero, Variable, Real and Complex
+\end{enumerate}
+
+\subsection{Calculation of Determinant}
+
+\begin{enumerate}
+    \item {\textbf{Determinant of a $2 \times 2$ Matrix}}
+    
+    Given a matrix $[A]$:
+    $$ [A] = \begin{bmatrix} a & b \\ c & d \end{bmatrix}_{2 \times 2} $$
+    
+    The determinant $|A|$ is calculated as:
+    $$ |A| = \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc $$
+    
+    \item {\textbf{Determinant of a $3 \times 3$ Matrix }}
+    
+    Given a matrix $[A]$:
+    $$  [A] = \begin{bmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+        \end{bmatrix}_{3 \times 3} 
+    $$
+    
+    The determinant can be calculated by calculating the sum of cofactors of a specific column. The determinant $|A|$ is calculated as:
+    $$ |A| = a \times (ei-fh) - b \times (di-gf) + c \times (dh-eg) $$
+    
+    \item If a determinant of a matrix is zero then the matrix is called Singular Matrix.
+\end{enumerate}
+
+\begin{notebox}{} 
+    For a $n \times n$ determinant the maximum number of terms after expansion is = n!. 
+\end{notebox}
+
+\subsection{Diagonal Matrix}
+
+\begin{enumerate}
+    \item The principal diagonal elements should all not be zero.
+    
+    \item The rest of the elements should all be zero.
+    
+    \item Example of a diagonal matrix
+    $$  [A] = \begin{bmatrix}
+        a & 0 & 0 \\
+        0 & b & 0 \\
+        0 & 0 & c
+        \end{bmatrix}_{3 \times 3} 
+    $$
+    
+    \item The determinant of a diagonal matrix is the product of all the diagonal elements.
+    $$  [A] = \begin{bmatrix}
+        a & 0 & 0 \\
+        0 & b & 0 \\
+        0 & 0 & c
+        \end{bmatrix}_{3 \times 3} \xrightarrow{det}
+        |A| = \begin{vmatrix}
+        a & 0 & 0 \\
+        0 & b & 0 \\
+        0 & 0 & c
+        \end{vmatrix}_{3 \times 3} \xrightarrow{}
+        \Delta A = abc
+    $$
+\end{enumerate}
+
+\subsection{Upper Triangular Matrix}
+
+\begin{enumerate}
+    \item Elements below principal diagonal = ALL ZERO
+    
+    \item Elements above principal diagonal including diagonal elements = Should NOT be ALL ZERO
+    
+    \item The determinant of a diagonal matrix is the product of all the diagonal elements.
+    $$  [A] = \begin{bmatrix}
+        a & x & y \\
+        0 & b & z \\
+        0 & 0 & c
+        \end{bmatrix}_{3 \times 3} \xrightarrow{det}
+        |A| = \begin{vmatrix}
+        a & x & y \\
+        0 & b & z \\
+        0 & 0 & c
+        \end{vmatrix}_{3 \times 3} \xrightarrow{}
+        \Delta A = abc
+    $$
+\end{enumerate}
+
+\subsection{Lower Triangular Matrix}
+
+\begin{enumerate}
+    \item Elements above principal diagonal = ALL ZERO
+    
+    \item Elements below principal diagonal including diagonal elements = Should NOT be ALL ZERO
+    
+    \item The determinant of a diagonal matrix is the product of all the diagonal elements.
+    $$  [A] = \begin{bmatrix}
+        a & 0 & 0 \\
+        z & b & 0 \\
+        y & z & c
+        \end{bmatrix}_{3 \times 3} \xrightarrow{det}
+        |A| = \begin{vmatrix}
+        a & 0 & 0 \\
+        x & b & 0 \\
+        y & z & c
+        \end{vmatrix}_{3 \times 3} \xrightarrow{}
+        \Delta A = abc
+    $$
+\end{enumerate}
+
+\subsection{Rotation of Elements}
+
+\begin{enumerate}
+    \item For a $2 \times 2$ Matrix:
+    
+    $$  [A] = \begin{bmatrix}
+        a & b \\
+        b & a 
+        \end{bmatrix}_{2 \times 2} \xrightarrow{} \Delta A = a^2 - b^2
+    $$
+    
+    \item For a $4 \times 4$ Matrix:
+    
+    $$  [A] = \begin{bmatrix}
+        a & 0 & 0 & b \\
+        0 & a & b & 0 \\
+        0 & b & a & 0 \\
+        b & 0 & 0 & a
+        \end{bmatrix}_{4 \times 4} \xrightarrow{} \Delta A = (a^2 - b^2)^2
+    $$
+    
+    \item For a $6 \times 6$ Matrix:
+    
+    $$  [A] = \begin{bmatrix}
+        a & 0 & 0 & 0 & 0 & b \\
+        0 & a & 0 & 0 & b & 0 \\
+        0 & 0 & a & b & 0 & 0 \\
+        0 & 0 & b & a & 0 & 0 \\
+        0 & b & 0 & 0 & a & 0 \\
+        b & 0 & 0 & 0 & 0 & a
+        \end{bmatrix}_{6 \times 6} \xrightarrow{} \Delta A = (a^2 - b^2)^3
+    $$
+\end{enumerate}
+
+\begin{impbox}{Shortcut Calculation of $3 \times 3$ Matrix Determinant}
+    The shortcut is only valid for $3 \times 3$ Matrix. 
+    
+    Given a matrix $[A]$:
+    $$  [A] = \begin{bmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+        \end{bmatrix}_{3 \times 3} $$
+    
+    The Determinant can be calculated by creating a matrix in which thee first 3 columns are same as that of the matrix and then the next two columns are first and second columns respectively.:
+    
+    $$  \begin{matrix}
+        a & b & c & a & b \\
+        d & e & f & d & e \\
+        g & h & i & g & h
+        \end{matrix}
+    $$
+    
+    $$ det(A) = (aei + bfg + cdh) - (gec + hfa + idb) $$
+\end{impbox}
+
+\begin{notebox}{Special Cases of Determinant}
+    Valid for Matrices $3 \times 3$ and above. If there is a serial series of number in a proper order (whether rows or columns) the determinant will always be zero.
+    
+    \vspace{0.2cm}
+    
+    Examples:
+    
+    $$  [A] = \begin{bmatrix}
+        1 & 2 & 3 & 4 \\
+        5 & 6 & 7 & 8 \\
+        9 & 10 & 11 & 12 \\
+        13 & 14 & 15 & 16
+        \end{bmatrix}_{4 \times 4} \xrightarrow{det} \Delta = 0
+    $$
+    
+    $$  [B] = \begin{bmatrix}
+        13 & 14 & 15 & 16 \\
+        17 & 18 & 19 & 20 \\
+        21 & 22 & 23 & 24 \\
+        25 & 26 & 27 & 28
+        \end{bmatrix}_{4 \times 4} \xrightarrow{det} \Delta = 0
+    $$
+\end{notebox}
+
+\subsection{Block Diagonal Matrix}
+
+For a matrix which is $4 \times 4$ or $6 \times 6$ the matrix can be simplified into a form of matrix of matrices, which then can be used for calculating determinants.
+
+Given a matrix $[M]$
+$$  [M] = \begin{bmatrix}
+    1 & 2 & 0 & 0 \\
+    3 & 4 & 0 & 0 \\
+    0 & 0 & 5 & 6 \\
+    0 & 0 & 7 & 8
+    \end{bmatrix}_{4 \times 4} 
+    \xrightarrow{simpified} [M] =  \begin{bmatrix}
+    A & 0 \\
+    0 & B
+    \end{bmatrix}_{2 \times 2}
+    \xrightarrow{det} \Delta M = |A| \times |B| = (-2) \times (-2) = 4 
+$$
+
+where: 
+$   [A] =  \begin{bmatrix}
+    1 & 2 \\
+    3 & 4
+    \end{bmatrix}_{2 \times 2} and,
+    [B] =  \begin{bmatrix}
+    5 & 6 \\
+    7 & 8
+    \end{bmatrix}_{2 \times 2}
+$
+
+\subsubsection{Block Upper Triangular Matrix}
+
+Given a matrix $[M]$
+$$  [M] = \begin{bmatrix}
+    1 & 2 & 5 & 6 \\
+    3 & 4 & 7 & 8 \\
+    0 & 0 & 9 & 1 \\
+    0 & 0 & 2 & 3
+    \end{bmatrix}_{4 \times 4} 
+    \xrightarrow{simpified} [M] =  \begin{bmatrix}
+    A & C \\
+    0 & B
+    \end{bmatrix}_{2 \times 2}
+    \xrightarrow{det} \Delta M = |A| \times |B| = (-2) \times (25) = -50 
+$$
+
+where: 
+$   [A] =  \begin{bmatrix}
+    1 & 2 \\
+    3 & 4
+    \end{bmatrix}_{2 \times 2} 
+    [B] =  \begin{bmatrix}
+    9 & 1 \\
+    2 & 3
+    \end{bmatrix}_{2 \times 2} and,
+    [C] =  \begin{bmatrix}
+    5 & 6 \\
+    7 & 8
+    \end{bmatrix}_{2 \times 2}
+$
+
+\subsubsection{Lower Upper Triangular Matrix}
+
+Given a matrix $[M]$
+$$  [M] = \begin{bmatrix}
+    1 & 2 & 0 & 0 \\
+    3 & 4 & 0 & 0 \\
+    5 & 6 & 9 & 1 \\
+    7 & 8 & 2 & 3
+    \end{bmatrix}_{4 \times 4} 
+    \xrightarrow{simpified} [M] =  \begin{bmatrix}
+    A & 0 \\
+    C & B
+    \end{bmatrix}_{2 \times 2}
+    \xrightarrow{det} \Delta M = |A| \times |B| = (-2) \times (25) = -50 
+$$
+
+where: 
+$   [A] =  \begin{bmatrix}
+    1 & 2 \\
+    3 & 4
+    \end{bmatrix}_{2 \times 2} 
+    [B] =  \begin{bmatrix}
+    9 & 1 \\
+    2 & 3
+    \end{bmatrix}_{2 \times 2} and,
+    [C] =  \begin{bmatrix}
+    5 & 6 \\
+    7 & 8
+    \end{bmatrix}_{2 \times 2}
+$
+
+\vspace{0.5cm}
+
+\subsection{Properties of Determinants}
+
+\begin{enumerate}
+    \item If 2 rows or 2 columns of a matrix are identical or proportional then Determinant $\Delta$ = 0.
+    
+    $$  [A] = \begin{bmatrix} 
+        1 & 1 & 2 \\ 
+        2 & -1 & 4 \\ 
+        3 & 3 & 6 
+        \end{bmatrix}_{3 \times 3} 
+        \xrightarrow[C_3 = 2C_1]{R_3 = 3R_1} \Delta = 0
+    $$
+    
+    $$  [A] = \begin{bmatrix} 
+        1 & 1 & 1 & 1 \\ 
+        0 & 1 & -7 & 3 \\ 
+        1 & 7 & 3 & 131 \\ 
+        2 & 2 & 2 & 2 
+        \end{bmatrix}_{4 \times 4} 
+        \xrightarrow{R_4 = 2R_1} \Delta = 0
+    $$
+    
+    \item If any row is a linear combination of all other rows then Determinant $\Delta$ = 0.
+    
+    $$ \lambda_{1}\mathbf{R}_{1} + \lambda_{2}\mathbf{R}_{2} + \lambda_{3}\mathbf{R}_{3} = \mathbf{0} $$
+    
+    \item If any column is a linear combination of all other columns then Determinant $\Delta$ = 0.
+    
+    $$ \lambda_{1}\mathbf{c}_{1} + \lambda_{2}\mathbf{c}_{2} + \lambda_{3}\mathbf{c}_{3} = \mathbf{0} $$
+    
+    \item If all the elements of a row or columns of a matrix is all zero then Determinant $\Delta$ = 0.
+    
+    $$  [A] = \begin{bmatrix} 
+        0 & 0 & 0 \\ 
+        2 & 4 & 6 \\ 
+        -1 & 3 & 7 
+        \end{bmatrix} \longrightarrow \Delta = 0
+    $$
+    
+    \item If two rows or two columns are interchanged then the sign of the Determinant changes.
+    
+    $$  [A] = \begin{bmatrix} 
+        1 & 2 & 3 \\ 
+        1 & 0 & -1 \\ 
+        2 & -7 & 11 
+        \end{bmatrix} \xrightarrow{R_1 \leftrightarrow R_3} 
+        [B] = \begin{bmatrix} 
+        2 & -7 & 11 \\ 
+        1 & 0 & -1 \\ 
+        1 & 2 & 3 
+        \end{bmatrix}
+    $$
+    
+    $$ |A| = \Delta $$
+    $$ |B| = -\Delta $$
+    
+    \item If three rows or three columns are interchanged then the sign of the Determinant remains unaltered.
+    
+    \item The Determinant of a Matrix does not change when transposed.
+    
+    $$ det(A) = det(A^T) = det\left(\frac{1}{A^{-1}}\right) $$
+    
+    \item When a scalar value K is multiplied with a matrix A, then the determinant of the matrix is multiplied with K to the power of n times. Where n is the dimensions of a square matrix.
+    
+    $$ [B]_{n \times n} = K[A]_{n \times n} = [KA]_{n \times n} \xrightarrow{det} |B| = K^n|A| = |KA| $$
+    
+    \item If some or all the elements of a row or a column of a Determinant are expressed as sum of two (or more) terms then the determinant can be expressed as sum of two (or more) Determinants.
+    
+    $$  \begin{vmatrix}
+        x_1 + y_1 & x_2 + y_2 \\
+        x_3 + y_3 & x_4 + y_4
+        \end{vmatrix} = 
+        \begin{vmatrix}
+        x_1 & x_2 \\
+        x_3 & x_4
+        \end{vmatrix} + 
+        \begin{vmatrix}
+        y_1 & y_2 \\
+        y_3 & y_4
+        \end{vmatrix}
+    $$
+    
+    $$  \begin{vmatrix}
+        x_1 + y_1 & x_2 + y_2 \\
+        x_3 + y_3 & x_4 + y_4
+        \end{vmatrix} = 
+        \begin{vmatrix}
+        x_1 & x_2 \\
+        x_3 + y_3 & x_4 + y_4
+        \end{vmatrix} + 
+        \begin{vmatrix}
+        y_1 & y_2 \\
+        x_3 + y_3 & x_4 + y_4
+        \end{vmatrix}
+    $$
+    
+    $$  \begin{vmatrix}
+        x_1 + y_1 & x_2 + y_2 \\
+        x_3 + y_3 & x_4 + y_4
+        \end{vmatrix} = 
+        \begin{vmatrix}
+        x_1 & x_2 + y_2 \\
+        x_3 & x_4 + y_4
+        \end{vmatrix} + 
+        \begin{vmatrix}
+        y_1 & x_2 + y_2 \\
+        y_3 & x_4 + y_4
+        \end{vmatrix}
+    $$
+    
+    \item Let C be the sum of two matrix A and B, then $det(C) \neq det(A) + det(B)$. If required always check by calculating.
+    
+    \item If in a Determinant:
+    \item[i.] $R_i = 1 \times R_i + K \times R_j$
+    \item[ii.] $C_i = 1 \times C_i + K \times C_j$
+    
+    $R_i \xrightarrow{} R_i + K \times R_j$ in one step, care should be taken to see that a row that is affected in one operation should not be used in another operation simultaneously.
+\end{enumerate}
+
+\section{Types of Matrices}
+
+\begin{enumerate}
+    \item \textbf{Row Matrix:} One row and multiple columns.
+    
+    $$  [A] = \begin{bmatrix}
+        1 & 2 & 3 & 4
+        \end{bmatrix}_{1 \times 4}
+    $$
+    
+    \item \textbf{Columns Matrix:} One column and multiple rows.
+    
+    $$  [A] = \begin{bmatrix}
+        1 \\ 2 \\ 3 \\ 4
+        \end{bmatrix}_{4 \times 1}
+    $$
+    
+    \item \textbf{Zero Matrix:} A matrix where all its elements are zeros. It can be of any shape.
+    
+    $$  [A] = \begin{bmatrix}
+        0 & 0 & 0 \\ 
+        0 & 0 & 0
+        \end{bmatrix}_{2 \times 3}
+    $$
+    
+    \item \textbf{Diagonal Matrix:} A square matrix who's diagonal elements are all not zero, but rest of the elements are.
+    
+    $$  [A] = \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 2 & 0 & 0 \\
+        0 & 0 & 3 & 0 \\
+        0 & 0 & 0 & 4
+        \end{bmatrix}_{4 \times 4}
+    $$
+    
+    \item \textbf{Identity Matrix $[I]_n$ :} A square matrix who's diagonal elements are all 1, but rest of the elements are.
+    
+    $$  [A] = \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+        \end{bmatrix}_{4 \times 4}
+    $$
+    
+    \item \textbf{Upper Triangular Matrix:} A square matrix who's every element below principal diagonal elements are all zero, and rest of the elements should not all be zero.
+    
+    $$  [A] = \begin{bmatrix}
+        1 & 2 & 3 \\
+        0 & 2 & 3 \\
+        0 & 0 & 3 \\
+        \end{bmatrix}_{3 \times 3}
+    $$
+    
+    \item \textbf{Lower Triangular Matrix:} A square matrix who's every element above principal diagonal elements are all zero, and rest of the elements should not all be zero.
+    
+    $$  [A] = \begin{bmatrix}
+        1 & 0 & 0 \\
+        1 & 2 & 0 \\
+        1 & 2 & 3 \\
+        \end{bmatrix}_{3 \times 3}
+    $$
+    
+    \item \textbf{Equal Matrices:} Two matrices are said to be equal if the dimensions and all the elements of both the matrices are same.
+    
+    Let $[A]$ be $ \begin{bmatrix}
+        1 & 2 & 3 \\
+        1 & 2 & 3 \\
+        1 & 2 & 3 \\
+        \end{bmatrix}_{3 \times 3}
+    $ and $[B]$ be $ \begin{bmatrix}
+        1 & 2 & 3 \\
+        1 & 2 & 3 \\
+        1 & 2 & 3 \\
+        \end{bmatrix}_{3 \times 3}
+    $ then both matrices are said to be equal i.e. $[A] = [B]$.
+    
+    \item \textbf{Scalar Matrix:} It is a square matrix with all diagonal elements as K.
+    
+    $$ [A]_{n \times n} = K \times [I]_n = [KI]_n $$
+\end{enumerate}
+
+\subsection{Properties of Identity Matrices:}
+
+\begin{enumerate}
+    \item $[I]_n \times [I]_n \times [I]_n \times [I]_n \dots = [I]_n$
+    
+    \item $[A]_{n \times n} \times [I]_n = [I]_n \times [A]_{n \times n} = [A]_{n \times n}$
+    
+    \item $[I]_n = [I]^{-1}_n$
+    
+    \item $|I|_n = 1$
+\end{enumerate}
+
+\subsection{Properties of Matrix Addition:}
+
+\begin{enumerate}
+    \item Two matrix can be added only when both of their dimensions are same.
+    
+    \item $[A]_{m \times n} - [B]_{m \times n} = [A]_{m \times n} + [-B]_{m \times n}$
+        
+    \item \textbf{Commutative:} $[A] + [B] = [B] + [A]$
+        
+    \item \textbf{Associative:} $\{[A] + [B]\} + [C] = [A] + \{[B] + [C]\}$
+        
+    \item \textbf{Cancellation:} If $[A] + [B] = [A] + [C]$, then $[B] = [C]$
+        
+    \item $[A] + [O] = [A]$ \quad (where $[O]$ is the null matrix)
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{impbox}{Sum of two Determinants}
+    If $[C] = [A] + [B]$ then $|C| \neq |A| + |B|$ but,
+    
+    $$ \Delta(A + B) = \Delta(A) + \Delta(B) + Trace(A) \cdot Trace(B) - Trace(AB)
+    $$
+    \\
+    where $Trace(A)$ = Sum of diagonal elements of a matrix [A].
+\end{impbox}
+
+\subsection{Properties of Matrix Multiplication:}
+
+\begin{enumerate}
+    \item Two matrix can be multiplied only when the number of columns of matrix [A] is equal to the number of row in matrix [B].
+    
+    $$[A]_{m \times n} \times [B]_{n \times p} = [C]_{m \times p}$$
+    
+    \item Total number of multiplication of elements required in multiplication of two matrix = $m \times n \times p$
+    
+    \item Total number of addition of elements required in multiplication of two matrix = $m \times (n- 1) \times p$
+    
+    \item If multiplication $[A][B]$ is possible then $[B][A]$ may or may not be possible. If $[A]_{m \times n} \times [B]_{n \times m}$ is possible and $[B]_{n \times m} \times [A]_{m \times n}$ is possible.
+    
+    \item \textbf{Not Commutative:} $[A][B] \neq [B][A]$ 
+        
+    \item \textbf{Associative:} $[A] \{[B][C]\} = \{[A][B]\} [C]$
+        
+    \item \textbf{Distributive:} $[A] \{[B] + [C]\} = [A][B] + [A][C]$
+    
+    \item If [A] is a diagonal matrix then $[A]^K = [a_{ij}]^K = [a^K_{ij}]$
+    
+    \item If the product of two matrices is a null matrix, $[A][B] = [O]$, it implies one of the following cases:
+    
+    \begin{enumerate}
+        \item \textbf{Case 1:} $[A] = [O]$ and $[B] = [O]$
+        \item \textbf{Case 2:} $([A] = [O] \text{ and } [B] \neq [O])$ or $([A] \neq [O] \text{ and } [B] = [O])$
+        \item \textbf{Case 3:} $[A] \neq [O]$ and $[B] \neq [O]$
+    \end{enumerate}
+    
+    \begin{impbox}{Important Implications}
+        If Case 3 occurs ($[A], [B] \neq [O]$ but $[A][B] = [O]$):
+        \begin{itemize}
+            \item Only possible if $[A]$ and $[B]$ are \textbf{singular matrices}.
+            \item Determinants must be zero: $|A| = 0$ and $|B| = 0$.
+            \item The inverse of $[A]$ and $[B]$ \textbf{should not exist}.
+        \end{itemize}
+    \end{impbox}
+    
+    \begin{notebox}{}
+        The multiplication of two non-null matrices is a null matrix if and only if both matrices are singular matrix.
+    \end{notebox}
+\end{enumerate}
+
+\subsection{Matrix Multiplication (2 $\times$ 2)}
+
+Given the matrices:
+$$ A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}, 
+   B = \begin{bmatrix} e & f \\ g & h \end{bmatrix} 
+$$
+
+The product $AB$ is defined as:
+$$  AB = \begin{bmatrix} 
+    ae + bg & af + bh \\ 
+    ce + dg & cf + dh 
+    \end{bmatrix}
+$$
+
+\subsection{Matrix Multiplication (3 $\times$ 3)}
+
+Given:
+$$  A = \begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}, 
+    B = \begin{bmatrix} j & k & l \\ m & n & o \\ p & q & r \end{bmatrix} 
+$$
+
+The product $C = AB$ is:
+$$  C = \begin{bmatrix} 
+    aj+bm+cp & ak+bn+cq & al+bo+cr \\ 
+    dj+em+fp & dk+en+fq & dl+eo+fr \\ 
+    gj+hm+ip & gk+hn+iq & gl+ho+ir 
+    \end{bmatrix} 
+$$
+
+\subsection{Inverse of a Matrix}
+
+\subsubsection{Invertible Matrix}
+
+\begin{enumerate}
+    \item A Matrix is said to be invertible if the matrix is a Non-Singular matrix. i.e. $|A| \neq 0$
+    
+    \item The product of matrix $[A]$ and its inverse $[A]^{-1}$ should be an Identity matrix [I]. e.g. $[A] \times [A]^{-1} = [I]_n$
+\end{enumerate}
+
+\subsubsection{Calculation of Inverse of a Matrix}
+
+The inverse of a matrix $A$ is given by the formula:
+$$ A^{-1} = \frac{1}{|A|} \text{adj}(A) $$
+
+\begin{enumerate}
+    \item \textbf{Calculate the Determinant ($|A|$):} 
+    \begin{itemize}
+        \item Find the determinant of the $3 \times 3$ matrix.
+        \item \textbf{Check for Singularity:} If $|A| = 0$, the inverse does not exist.
+    \end{itemize}
+
+    \item \textbf{Find the Matrix of Minors:}
+    \begin{itemize}
+        \item For each element, delete the row and column it belongs to.
+        \item Calculate the determinant of the remaining $2 \times 2$ matrix.
+    \end{itemize}
+
+    \item \textbf{Create the Matrix of Cofactors:} Apply the sign checkerboard pattern to the minors. $$ \begin{bmatrix} + & - & + \\ - & + & - \\ + & - & + \end{bmatrix} $$
+
+    \item \textbf{Find the Adjoint Matrix ($\text{adj}(A)$):} Take the \textbf{transpose} of the cofactor matrix (swap rows with columns).
+
+    \item \textbf{Final Result:} Multiply the Adjoint matrix by $\frac{1}{|A|}$.
+\end{enumerate}
+
+\subsection{Properties of Inverse of a Matrix}
